@@ -8,7 +8,7 @@ pipeline {
         stage('Get Dockerfile') {
             steps {
                 echo 'Getting docker file'
-		sh 'wget https://raw.githubusercontent.com/itamary/examples/master/Dockerfile'
+		sh 'wget http://s3.amazonaws.com/alibabadocker/Dockerfile'
             }
         }
         stage('Build') {
