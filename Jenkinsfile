@@ -14,14 +14,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-		sh "docker build -t ormaman/${App_Name}:${BUILD_NUMBER} ."
+		sh "/usr/bin/docker build -t ormaman/${App_Name}:${BUILD_NUMBER} ."
             }
         }
         stage('Push to registry') {
             steps {
                 echo 'Pushing to registry..'
-		sh "docker login -u ormaman -p Aa123456"
-		sh "docker push ormaman/${App_Name}:${BUILD_NUMBER}"
+		sh "/usr/bin/docker login -u ormaman -p Aa123456"
+		sh "/usr/bin/docker push ormaman/${App_Name}:${BUILD_NUMBER}"
             }
         }
     }
