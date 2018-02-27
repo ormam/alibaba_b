@@ -32,6 +32,7 @@ pipeline {
 	
 	    stage('Test') {
             steps {
+		sh "sleep 2"    
 	     	sh "curl 127.0.0.1:80${BUILD_NUMBER}"
 	    }
 	}
