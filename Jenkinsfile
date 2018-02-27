@@ -24,5 +24,18 @@ pipeline {
 		sh " /usr/bin/docker push ormaman/${App_Name}:${BUILD_NUMBER}"
             }
         }
+        stage('Deploy') {
+            steps {
+	     	sh "  docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+	    } 
+	}
+	
+	    stage('Test') {
+            steps {
+	     	sh "curl 127.0.0.1:80${BUILD_NUMBER}"
+	    }
+	}
+	    
+		    
     }
 }
