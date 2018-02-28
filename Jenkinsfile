@@ -10,24 +10,29 @@ pipeline {
                 echo 'Getting docker file'
 		sh 'wget http://s3.amazonaws.com/alibabadocker/Dockerfile'
             }
-		success{
-			echo 'Docker file addmited'
+		post{
+			success{
+				echo 'Docker file addmited'
+			}
+			failure {
+			    echo ' Docker file addmission failed.'
+			}
 		}
-		failure {
-                    echo ' Docker file addmission failed.'
-                }
-        }
+
+	}
         stage('Build') {
             steps {
                 echo 'Building..'
 		sh " /usr/bin/docker build -t ormaman/${App_Name}:${BUILD_NUMBER} ."
             }
-        	success{
-			  echo 'Build success'
+		post {
+			success{
+				  echo 'Build success'
+			}
+			failure {
+				 echo ' Build success failed.'
+			}
 		}
-		failure {
-                   	 echo ' Build success failed.'
-                }
 	}
         stage('Push to registry') {
             steps {
@@ -35,14 +40,14 @@ pipeline {
 		sh " /usr/bin/docker login -u ormaman -p Aa123456"
 		sh " /usr/bin/docker push ormaman/${App_Name}:${BUILD_NUMBER}"
             }
-		
+	   post{ 
 		success{
 			  echo 'Push to registry done'
 		}
 		failure {
                    	 echo ' Push to registry failed.'
                 }
-        
+	   }
 	}
 	    
         stage('Deploy') {
@@ -60,15 +65,16 @@ pipeline {
 		sh "sleep 2"    
 	     	sh "curl 127.0.0.1:80${BUILD_NUMBER}"
 	    }
-		
-		success{
-			echo 'server running!'
+		post{
+			success{
+				echo 'server running!'
+			}
+			failure {
+			    sh " export Docker_Temp= ormaman/${App_Name}:${BUILD_NUMBER} "
+			    sh " docker kill ` docker ps | grep -i \$Docker_Temp | awk '{print \$1}'` "
+			    echo 'server failed'
+			}
 		}
-		failure {
-		    sh " export Docker_Temp= ormaman/${App_Name}:${BUILD_NUMBER} "
-		    sh " docker kill ` docker ps | grep -i \$Docker_Temp | awk '{print \$1}'` "
-		    echo 'server failed'
-                }
 	}
 	    
 		    
