@@ -14,4 +14,4 @@ RUN apt-get install -y git
 RUN python3.6 -m pip install pip --upgrade
 RUN python3.6 -m pip install wheel
 RUN python3.6 -m pip install pillow
-RUN wget 
+RUN echo "bla" >> /davis/bla.txt
