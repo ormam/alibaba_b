@@ -63,7 +63,7 @@ pipeline {
 	
 	    stage('Test') {
             steps {
-		sh "sleep 10"    
+		sh "sleep 5"    
 	     	sh "curl 127.0.0.1:80${BUILD_NUMBER}"
 	    }
 		post{
