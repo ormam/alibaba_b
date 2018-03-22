@@ -68,7 +68,7 @@ pipeline {
 	    }
 		post{
 			success{
-				echo 'server running!'
+				echo 'server running!!'
 			}
 			failure {
 			    sh " export Docker_Temp= ormaman/${App_Name}:${BUILD_NUMBER} "
