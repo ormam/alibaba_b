@@ -12,5 +12,9 @@ app.get('/', (req, res) => {
   res.send('alibaba-Hello World!\n');
 });
 
+app.get('/maman', (req, res) => {
+  res.send('or_maman\n');
+});
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
