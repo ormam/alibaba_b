@@ -55,7 +55,8 @@ pipeline {
 		    timeout(time:5, unit:'DAYS'){
 		    input message:'Approve Dokcer PRODUCTION Deployment?'
 		    }
-			sh "  docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+			sh 'ec2-user@172.31.94.97 "docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"'
+			sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
 		   } 
 	   	
 	}
