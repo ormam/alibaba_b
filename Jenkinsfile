@@ -56,7 +56,7 @@ pipeline {
 		    input message:'Approve Dokcer PRODUCTION Deployment?'
 		    }
 			sh " ssh 172.31.94.97 -l ec2-user docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
-			sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+			//sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
 		   } 
 	   	
 	}
@@ -64,7 +64,8 @@ pipeline {
 	    stage('Health check') {
             steps {
 		sh "sleep 5"    
-	     	sh "curl 127.0.0.1:80${BUILD_NUMBER}"
+	     	//sh "curl 127.0.0.1:80${BUILD_NUMBER}"
+		sh "curl  172.31.94.97:80${BUILD_NUMBER}"
 	    }
 		post{
 			success{
