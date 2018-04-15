@@ -3,7 +3,7 @@ pipeline {
     environment {
         App_Name    = 'alibaba-nodejs4'
     }
-
+    agent {label 'Slave_IBM_1'}
     stages {
         stage('Get Dockerfile') {
             steps {
