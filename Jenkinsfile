@@ -49,15 +49,15 @@ pipeline {
                 }
 	   }
 	}
-	node ('Slave_IBM_1') {    
-     	   stage('Deploy') {
-		    steps {
-			    timeout(time:5, unit:'DAYS'){
-			    input message:'Approve Dokcer PRODUCTION Deployment?'
-			}
+	 
+        stage('Deploy') {
+		steps {
+		    timeout(time:5, unit:'DAYS'){
+		    input message:'Approve Dokcer PRODUCTION Deployment?'
+		    }
 			sh "  docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
-		    } 
-	   }	
+		   } 
+	   	
 	}
 	
 	    stage('Health check') {
