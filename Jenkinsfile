@@ -1,6 +1,6 @@
 
 pipeline {
-    //agent any
+    agent any
     environment {
 	App_Name    = 'IBM-nodejs4'
     }
