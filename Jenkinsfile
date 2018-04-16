@@ -1,7 +1,8 @@
 pipeline {
-    agent any
+    //agent any
+    agnet{ label 'Slave_IBM_1' }
     environment {
-        App_Name    = 'alibaba-nodejs4'
+        App_Name    = 'IBM-nodejs4'
     }
     
     stages {
