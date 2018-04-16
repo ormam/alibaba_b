@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-	App_Name    = 'IBM-nodejs4'
+	App_Name    = 'alibaba-nodejs4'
     }
     stages {
 	stage('Get Dockerfile') {
