@@ -1,6 +1,6 @@
 pipeline {
     //agent any
-    agnet{ label 'Slave_IBM_1' }
+    agnet {label 'slave' }
     environment {
         App_Name    = 'IBM-nodejs4'
     }
