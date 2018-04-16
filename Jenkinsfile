@@ -4,7 +4,6 @@ pipeline {
     environment {
 	App_Name    = 'IBM-nodejs4'
     }
-    node ('Slave_IBM_1') {
     stages {
 	stage('Get Dockerfile') {
 	    steps {
@@ -79,7 +78,6 @@ pipeline {
 			}
 		}
 	}
-    }
     }
 }
 
