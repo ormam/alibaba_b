@@ -55,8 +55,8 @@ pipeline {
 		    timeout(time:5, unit:'DAYS'){
 		    input message:'Approve Dokcer PRODUCTION Deployment?'
 		    }
-			sh " ssh 52.204.154.66 -l ec2-user docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
-			//sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+			//sh " ssh 52.204.154.66 -l ec2-user docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+			sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
 		   } 
 
 	}
