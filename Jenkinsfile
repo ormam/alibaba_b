@@ -8,6 +8,8 @@ pipeline {
 	stage('Get Dockerfile') {
 	    steps {
 		echo 'Getting docker file'
+		miau = sh "whoami"
+		echo miau
 		sh 'wget http://s3.amazonaws.com/alibabadocker/deepinstinct/Dockerfile'
 	    }
 		post{
