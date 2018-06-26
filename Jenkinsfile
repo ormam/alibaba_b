@@ -2,13 +2,12 @@ pipeline {
     agent any
     environment {
 	App_Name    = 'alibaba-nodejs4'
-	miau = sh "whoami"
+        sh "whoami"
     }
     stages {
 	stage('Get Dockerfile') {
 	    steps {
 		echo 'Getting docker file'
-		echo "${miau}"
 		sh 'wget http://s3.amazonaws.com/alibabadocker/deepinstinct/Dockerfile'
 	    }
 		post{
@@ -56,8 +55,8 @@ pipeline {
 		    timeout(time:5, unit:'DAYS'){
 		    input message:'Approve Dokcer PRODUCTION Deployment?'
 		    }
-			//sh " ssh 52.204.154.66 -l ec2-user docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
-			sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+			sh " ssh 54.209.175.214 -l ec2-user docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+			//sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
 		   } 
 
 	}
@@ -65,8 +64,8 @@ pipeline {
 	    stage('Health check') {
 	    steps {
 		sh "sleep 5"    
-		sh "curl 127.0.0.1:80${BUILD_NUMBER}"
-		//sh "curl  52.204.154.66:80${BUILD_NUMBER}"
+		//sh "curl 127.0.0.1:80${BUILD_NUMBER}"
+		sh "curl  54.209.175.214:80${BUILD_NUMBER}"
 	    }
 		post{
 			success{
