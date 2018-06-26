@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
 	App_Name    = 'alibaba-nodejs4'
-        sh "whoami"
     }
     stages {
 	stage('Get Dockerfile') {
