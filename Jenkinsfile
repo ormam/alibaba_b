@@ -3,13 +3,13 @@ pipeline {
     agent any
     environment {
 	App_Name    = 'alibaba-nodejs4'
+	miau = sh "whoami"
     }
     stages {
 	stage('Get Dockerfile') {
 	    steps {
 		echo 'Getting docker file'
-		miau = sh "whoami"
-		echo miau
+		echo ${miau}
 		sh 'wget http://s3.amazonaws.com/alibabadocker/deepinstinct/Dockerfile'
 	    }
 		post{
