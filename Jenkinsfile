@@ -62,9 +62,9 @@ pipeline {
 
 	    stage('Health check') {
 	    steps {
-		sh "sleep 11"    
+		sh "sleep 6"    
 		//sh "curl 127.0.0.1:80${BUILD_NUMBER}"
-		sh "curl  172.31.89.1775:80${BUILD_NUMBER}"
+		sh "curl  172.31.89.177:80${BUILD_NUMBER}"
 	    }
 		post{
 			success{
