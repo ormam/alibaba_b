@@ -73,7 +73,7 @@ pipeline {
 			failure {
 			    sh " export Docker_Temp= ormaman/${App_Name}:${BUILD_NUMBER} "
 			    sh " docker kill ` docker ps | grep -i \$Docker_Temp | awk '{print \$1}'` "
-			    echo 'server failed'
+			    echo 'server failed..'
 			}
 		}
 	}
