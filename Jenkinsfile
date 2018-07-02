@@ -65,6 +65,7 @@ pipeline {
 		sh "sleep 6"    
 		//sh "curl 127.0.0.1:80${BUILD_NUMBER}"
 		sh "curl  172.31.89.177:80${BUILD_NUMBER}"
+		echo "Try to surf to 35.174.165.205:8080"
 	    }
 		post{
 			success{
