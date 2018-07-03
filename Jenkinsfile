@@ -7,6 +7,8 @@ pipeline {
 	stage('Get Dockerfile') {
 	    steps {
 		echo 'Getting docker file'
+		sh 'pwd' 
+		sh 'ls -l' 
 		sh 'wget http://s3.amazonaws.com/alibabadocker/deepinstinct/Dockerfile'
 	    }
 		post{
