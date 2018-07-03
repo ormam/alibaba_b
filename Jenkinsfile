@@ -54,7 +54,7 @@ pipeline {
 		    timeout(time:5, unit:'DAYS'){
 		    input message:'Approve Dokcer PRODUCTION Deployment?'
 		    }
-			sh " ssh 172.31.89.177 -l ec2-user docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
+			sh " ssh 172.31.93.0 -l ec2-user docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
 			//sh " docker run -d -p 80${BUILD_NUMBER}:8080  ormaman/${App_Name}:${BUILD_NUMBER}"
 		   } 
 
@@ -64,8 +64,8 @@ pipeline {
 	    steps {
 		sh "sleep 6"    
 		//sh "curl 127.0.0.1:80${BUILD_NUMBER}"
-		sh "curl  172.31.89.177:80${BUILD_NUMBER}"
-		echo "Try to surf to 35.174.165.205:80${BUILD_NUMBER}"
+		sh "curl  172.31.93.0:80${BUILD_NUMBER}"
+		echo "Try to surf to 18.206.39.31:80${BUILD_NUMBER}"
 	    }
 		post{
 			success{
